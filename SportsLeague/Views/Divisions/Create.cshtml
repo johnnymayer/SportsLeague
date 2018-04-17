@@ -1,0 +1,65 @@
+@model SportsLeague.Models.Division
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+
+<form asp-action="Create">
+    <div class="form-horizontal">
+        <h4>Division</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="divisionName" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="divisionName" class="form-control" />
+                <span asp-validation-for="divisionName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="divisionDescription" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="divisionDescription" class="form-control" />
+                <span asp-validation-for="divisionDescription" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="divisionSkill" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="divisionSkill" class="form-control" />
+                <span asp-validation-for="divisionSkill" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="maxTeamNumber" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="maxTeamNumber" class="form-control" />
+                <span asp-validation-for="maxTeamNumber" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+</body>
+</html>
