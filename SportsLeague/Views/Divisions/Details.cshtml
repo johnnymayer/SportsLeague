@@ -1,7 +1,7 @@
 @model SportsLeague.Models.Division
 
 @{
-    Layout = null;
+    Layout = "_Layout";
 }
 
 <!DOCTYPE html>
@@ -13,39 +13,39 @@
 </head>
 <body>
 
-<div>
-    <h4>Division</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.divisionName)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.divisionName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.divisionDescription)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.divisionDescription)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.divisionSkill)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.divisionSkill)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.maxTeamNumber)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.maxTeamNumber)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.divisionId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+    <div>
+        <h4>Division</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.divisionName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.divisionName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.divisionDescription)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.divisionDescription)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.divisionSkill)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.divisionSkill)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.maxTeamNumber)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.maxTeamNumber)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.divisionId">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>
 </body>
 </html>

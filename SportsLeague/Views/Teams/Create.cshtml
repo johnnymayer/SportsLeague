@@ -1,7 +1,8 @@
 @model SportsLeague.Models.Team
 
+
 @{
-    Layout = null;
+    Layout = "_layout";
 }
 
 <!DOCTYPE html>
@@ -13,39 +14,42 @@
 </head>
 <body>
 
-<form asp-action="Create">
-    <div class="form-horizontal">
-        <h4>Team</h4>
-        <hr />
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <div class="form-group">
-            <label asp-for="divisionId" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="divisionId" class="form-control" />
-                <span asp-validation-for="divisionId" class="text-danger"></span>
+    <form asp-action="Create">
+        <div class="form-horizontal">
+            <h4>Team</h4>
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="teamName" class="col-md-2 control-label">Team Name</label>
+                <div class="col-md-10">
+                    <input asp-for="teamName" class="form-control" />
+                    <span asp-validation-for="teamName" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Divisions" class="col-md-2 control-label">Division</label>
+                <div class="col-md-10">
+                    <input asp-for="Divisions" class="dropdown" />
+                    <span asp-validation-for="Divisions" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
             </div>
         </div>
-        <div class="form-group">
-            <label asp-for="teamName" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="teamName" class="form-control" />
-                <span asp-validation-for="teamName" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
+    </form>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
     </div>
-</form>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    @*@section Scripts {
+            @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+        }*@
 </body>
 </html>

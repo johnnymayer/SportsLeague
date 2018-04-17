@@ -1,7 +1,7 @@
 @model IEnumerable<SportsLeague.Models.Player>
 
 @{
-    Layout = null;
+    Layout = "_Layout";
 }
 
 <!DOCTYPE html>
@@ -12,38 +12,42 @@
     <title>Index</title>
 </head>
 <body>
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
+
+    <table class="table">
+        <thead>
+            <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.playerName)
+                    Name
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.captain)
                 </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.playerName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.captain)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.playerId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.playerId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.playerId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.playerName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.captain)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.playerId">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.playerId">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.playerId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+   
+        <a asp-action="Create">Create New</a> | 
+
+
+    @Html.ActionLink("Home", "Index", "Home")
 </body>
 </html>
