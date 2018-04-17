@@ -47,7 +47,7 @@ namespace SportsLeague.Controllers
         // GET: Teams/Create
         public IActionResult Create()
         {
-            ViewData["DivisionId"] = new SelectList(_context.Divisions, "DivisionId", "DivisionId");
+            ViewData["DivisionId"] = new SelectList(_context.Divisions, "DivisionId", "Name");
             return View();
         }
 
@@ -81,7 +81,7 @@ namespace SportsLeague.Controllers
             {
                 return NotFound();
             }
-            ViewData["DivisionId"] = new SelectList(_context.Divisions, "DivisionId", "DivisionId", team.DivisionId);
+            ViewData["DivisionId"] = new SelectList(_context.Divisions, "DivisionId", "Name", team.DivisionId);
             return View(team);
         }
 
@@ -117,7 +117,7 @@ namespace SportsLeague.Controllers
                 }
                 return RedirectToAction("Index");
             }
-            ViewData["DivisionId"] = new SelectList(_context.Divisions, "DivisionId", "DivisionId", team.DivisionId);
+            ViewData["DivisionId"] = new SelectList(_context.Divisions, "DivisionId", "Name", team.DivisionId);
             return View(team);
         }
 
