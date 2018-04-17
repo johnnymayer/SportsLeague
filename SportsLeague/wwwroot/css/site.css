@@ -1,4 +1,10 @@
-﻿body {
+﻿
+html, body {
+    background-image: url("http://78.media.tumblr.com/d5af9271bf4489085f86cef30d68967a/tumblr_mrwxjb7Y5i1s2lf81o1_400.gif") no-repeat center center fixed;
+    background-size: cover;
+}
+
+body {
     padding-top: 50px;
     padding-bottom: 20px;
 }

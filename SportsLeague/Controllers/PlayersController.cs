@@ -117,7 +117,7 @@ namespace SportsLeague.Controllers
                 }
                 return RedirectToAction("Index");
             }
-            ViewData["TeamId"] = new SelectList(_context.Teams, "TeamId", "TeamId", player.TeamId);
+            ViewData["TeamId"] = new SelectList(_context.Teams, "TeamId", "Name", player.TeamId);
             return View(player);
         }
 
