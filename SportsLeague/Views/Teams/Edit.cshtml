@@ -1,36 +1,30 @@
 @model SportsLeague.Models.Team
 
 @{
-    Layout = null;
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Edit</title>
-</head>
-<body>
+<h2>Edit</h2>
 
 <form asp-action="Edit">
     <div class="form-horizontal">
         <h4>Team</h4>
         <hr />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <input type="hidden" asp-for="teamId" />
+    <input type="hidden" asp-for="TeamId" />
         <div class="form-group">
-            <label asp-for="divisionId" class="col-md-2 control-label"></label>
+            <label asp-for="Name" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="divisionId" class="form-control" />
-                <span asp-validation-for="divisionId" class="text-danger"></span>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="teamName" class="col-md-2 control-label"></label>
+            <label asp-for="DivisionId" class="control-label col-md-2"></label>
             <div class="col-md-10">
-                <input asp-for="teamName" class="form-control" />
-                <span asp-validation-for="teamName" class="text-danger"></span>
+                <select asp-for="DivisionId" class="form-control" asp-items="ViewBag.DivisionId"></select>
+                <span asp-validation-for="DivisionId" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
@@ -45,8 +39,3 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
-</body>
-</html>

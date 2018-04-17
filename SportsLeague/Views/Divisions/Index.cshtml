@@ -1,59 +1,42 @@
 @model IEnumerable<SportsLeague.Models.Division>
 
 @{
-    Layout = "_Layout";
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
+<h2>Index</h2>
 
-    <table class="table">
-        <thead>
-            <tr>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
                 <th>
-                    Name
+                    @Html.DisplayNameFor(model => model.Name)
                 </th>
                 <th>
-                    Description
+                    @Html.DisplayNameFor(model => model.SkillLevel)
                 </th>
-                <th>
-                    Skill Level
-                </th>
-
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.divisionName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.divisionDescription)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.divisionSkill)
-                    </td>
-
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.divisionId">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.divisionId">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.divisionId">Delete</a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-
-    <a asp-action="Create">Create New</a> |
-
-    @Html.ActionLink("Home", "Index", "Home")
-</body>
-</html>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SkillLevel)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.DivisionId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.DivisionId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.DivisionId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

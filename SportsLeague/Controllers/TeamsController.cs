@@ -21,7 +21,8 @@ namespace SportsLeague.Controllers
         // GET: Teams
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Teams.ToListAsync());
+            var sportsLeagueDbContext = _context.Teams.Include(t => t.Division);
+            return View(await sportsLeagueDbContext.ToListAsync());
         }
 
         // GET: Teams/Details/5
@@ -33,7 +34,8 @@ namespace SportsLeague.Controllers
             }
 
             var team = await _context.Teams
-                .SingleOrDefaultAsync(m => m.teamId == id);
+                .Include(t => t.Division)
+                .SingleOrDefaultAsync(m => m.TeamId == id);
             if (team == null)
             {
                 return NotFound();
@@ -45,6 +47,7 @@ namespace SportsLeague.Controllers
         // GET: Teams/Create
         public IActionResult Create()
         {
+            ViewData["DivisionId"] = new SelectList(_context.Divisions, "DivisionId", "DivisionId");
             return View();
         }
 
@@ -53,7 +56,7 @@ namespace SportsLeague.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("teamId,divisionId,teamName")] Team team)
+        public async Task<IActionResult> Create([Bind("TeamId,Name,DivisionId")] Team team)
         {
             if (ModelState.IsValid)
             {
@@ -61,6 +64,7 @@ namespace SportsLeague.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
+            ViewData["DivisionId"] = new SelectList(_context.Divisions, "DivisionId", "DivisionId", team.DivisionId);
             return View(team);
         }
 
@@ -72,11 +76,12 @@ namespace SportsLeague.Controllers
                 return NotFound();
             }
 
-            var team = await _context.Teams.SingleOrDefaultAsync(m => m.teamId == id);
+            var team = await _context.Teams.SingleOrDefaultAsync(m => m.TeamId == id);
             if (team == null)
             {
                 return NotFound();
             }
+            ViewData["DivisionId"] = new SelectList(_context.Divisions, "DivisionId", "DivisionId", team.DivisionId);
             return View(team);
         }
 
@@ -85,9 +90,9 @@ namespace SportsLeague.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("teamId,divisionId,teamName")] Team team)
+        public async Task<IActionResult> Edit(int id, [Bind("TeamId,Name,DivisionId")] Team team)
         {
-            if (id != team.teamId)
+            if (id != team.TeamId)
             {
                 return NotFound();
             }
@@ -101,7 +106,7 @@ namespace SportsLeague.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!TeamExists(team.teamId))
+                    if (!TeamExists(team.TeamId))
                     {
                         return NotFound();
                     }
@@ -112,6 +117,7 @@ namespace SportsLeague.Controllers
                 }
                 return RedirectToAction("Index");
             }
+            ViewData["DivisionId"] = new SelectList(_context.Divisions, "DivisionId", "DivisionId", team.DivisionId);
             return View(team);
         }
 
@@ -124,7 +130,8 @@ namespace SportsLeague.Controllers
             }
 
             var team = await _context.Teams
-                .SingleOrDefaultAsync(m => m.teamId == id);
+                .Include(t => t.Division)
+                .SingleOrDefaultAsync(m => m.TeamId == id);
             if (team == null)
             {
                 return NotFound();
@@ -138,7 +145,7 @@ namespace SportsLeague.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var team = await _context.Teams.SingleOrDefaultAsync(m => m.teamId == id);
+            var team = await _context.Teams.SingleOrDefaultAsync(m => m.TeamId == id);
             _context.Teams.Remove(team);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
@@ -146,7 +153,7 @@ namespace SportsLeague.Controllers
 
         private bool TeamExists(int id)
         {
-            return _context.Teams.Any(e => e.teamId == id);
+            return _context.Teams.Any(e => e.TeamId == id);
         }
     }
 }

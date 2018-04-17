@@ -8,9 +8,10 @@ using SportsLeague.Models;
 namespace SportsLeague.Migrations
 {
     [DbContext(typeof(SportsLeagueDbContext))]
-    partial class SportsLeagueDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180417223826_Init")]
+    partial class Init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.5");

@@ -10,13 +10,10 @@ namespace SportsLeague.Models
     [Table("Players")]
     public class Player
     {
-
         [Key]
-        public int playerId { get; set; }
-        public string playerName { get; set; }
-        public int teamId { get; set; }
-        public int divisionId { get; set; }
-        public int captain { get; set; }
+        public int PlayerId { get; set; }
+        public string Name { get; set; }
+        public int TeamId { get; set; }
         public virtual Team Team { get; set; }
     }
 }

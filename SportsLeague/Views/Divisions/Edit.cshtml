@@ -1,50 +1,30 @@
 @model SportsLeague.Models.Division
 
 @{
-    Layout = "_Layout";
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Edit</title>
-</head>
-<body>
+<h2>Edit</h2>
 
 <form asp-action="Edit">
     <div class="form-horizontal">
         <h4>Division</h4>
         <hr />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <input type="hidden" asp-for="divisionId" />
+    <input type="hidden" asp-for="DivisionId" />
         <div class="form-group">
-            <label asp-for="divisionName" class="col-md-2 control-label"></label>
+            <label asp-for="Name" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="divisionName" class="form-control" />
-                <span asp-validation-for="divisionName" class="text-danger"></span>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="divisionDescription" class="col-md-2 control-label"></label>
+            <label asp-for="SkillLevel" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="divisionDescription" class="form-control" />
-                <span asp-validation-for="divisionDescription" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="divisionSkill" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="divisionSkill" class="form-control" />
-                <span asp-validation-for="divisionSkill" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="maxTeamNumber" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="maxTeamNumber" class="form-control" />
-                <span asp-validation-for="maxTeamNumber" class="text-danger"></span>
+                <input asp-for="SkillLevel" class="form-control" />
+                <span asp-validation-for="SkillLevel" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group">
@@ -59,8 +39,3 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
-@*@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}*@
-</body>
-</html>

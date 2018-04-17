@@ -33,7 +33,7 @@ namespace SportsLeague.Controllers
             }
 
             var division = await _context.Divisions
-                .SingleOrDefaultAsync(m => m.divisionId == id);
+                .SingleOrDefaultAsync(m => m.DivisionId == id);
             if (division == null)
             {
                 return NotFound();
@@ -53,7 +53,7 @@ namespace SportsLeague.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("divisionId,divisionName,divisionDescription,divisionSkill,maxTeamNumber")] Division division)
+        public async Task<IActionResult> Create([Bind("DivisionId,Name,SkillLevel")] Division division)
         {
             if (ModelState.IsValid)
             {
@@ -72,7 +72,7 @@ namespace SportsLeague.Controllers
                 return NotFound();
             }
 
-            var division = await _context.Divisions.SingleOrDefaultAsync(m => m.divisionId == id);
+            var division = await _context.Divisions.SingleOrDefaultAsync(m => m.DivisionId == id);
             if (division == null)
             {
                 return NotFound();
@@ -85,9 +85,9 @@ namespace SportsLeague.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("divisionId,divisionName,divisionDescription,divisionSkill,maxTeamNumber")] Division division)
+        public async Task<IActionResult> Edit(int id, [Bind("DivisionId,Name,SkillLevel")] Division division)
         {
-            if (id != division.divisionId)
+            if (id != division.DivisionId)
             {
                 return NotFound();
             }
@@ -101,7 +101,7 @@ namespace SportsLeague.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!DivisionExists(division.divisionId))
+                    if (!DivisionExists(division.DivisionId))
                     {
                         return NotFound();
                     }
@@ -124,7 +124,7 @@ namespace SportsLeague.Controllers
             }
 
             var division = await _context.Divisions
-                .SingleOrDefaultAsync(m => m.divisionId == id);
+                .SingleOrDefaultAsync(m => m.DivisionId == id);
             if (division == null)
             {
                 return NotFound();
@@ -138,7 +138,7 @@ namespace SportsLeague.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var division = await _context.Divisions.SingleOrDefaultAsync(m => m.divisionId == id);
+            var division = await _context.Divisions.SingleOrDefaultAsync(m => m.DivisionId == id);
             _context.Divisions.Remove(division);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
@@ -146,7 +146,7 @@ namespace SportsLeague.Controllers
 
         private bool DivisionExists(int id)
         {
-            return _context.Divisions.Any(e => e.divisionId == id);
+            return _context.Divisions.Any(e => e.DivisionId == id);
         }
     }
 }

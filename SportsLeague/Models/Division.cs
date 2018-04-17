@@ -7,21 +7,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SportsLeague.Models
 {
-    [Table("divisions")]
+    [Table("Divisions")]
     public class Division
     {
-
-        public Division()
-        {
-            this.Teams = new HashSet<Team>();
-        }
-
         [Key]
-        public int divisionId { get; set; }
-        public string divisionName { get; set; }
-        public string divisionDescription { get; set; }
-        public string divisionSkill { get; set; }
-        public int maxTeamNumber { get; set; }
+        public int DivisionId { get; set; }
+        public string Name { get; set; }
+        public string SkillLevel { get; set; }
         public virtual ICollection<Team> Teams { get; set; }
     }
 }
